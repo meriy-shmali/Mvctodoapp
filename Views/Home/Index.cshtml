@@ -23,6 +23,12 @@
                         <input type="hidden" name="id" value="@task.Id" />
                         <button type="submit">اكتملت</button>
                     </form>
+                     //زر لتعديل المهمة 
+                    <form method="post" asp-action="EditTask" style="display:inline; margin-right: 10px;">
+                        <input type="hidden" name="id" value="@task.Id" />
+                        <input type="text" name="title" value="@task.Title" />
+                        <button type="submit">تعديل</button>
+                    </form>
 
                 }
             </li>

@@ -49,5 +49,32 @@ namespace MvcTodoApp.Controllers
                 task.IsComplete = true;
             return RedirectToAction("Index");
         }
+              /// <summary>
+        /// عرض صفحة تعديل المهمة.
+        /// </summary>
+        [HttpGet]
+        public IActionResult EditTask(int id)
+        {
+            var task = tasks.FirstOrDefault(t => t.Id == id);
+            if (task == null)
+                return NotFound();
+
+            return View(task); 
+        }
+
+        /// <summary>
+        /// تنفيذ تعديل المهمة.
+        /// </summary>
+        [HttpPost]
+        public IActionResult EditTask(int id, string title)
+        {
+            var task = tasks.FirstOrDefault(t => t.Id == id);
+            if (task != null && !string.IsNullOrEmpty(title))
+            {
+                task.Title = title;
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
+    
